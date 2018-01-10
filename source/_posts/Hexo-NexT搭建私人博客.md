@@ -101,8 +101,8 @@ tags:
 categories:
 ---
 ```
-在`---`后编写博文，通过`hexo s`启动服务，访问http://localhost:4000/2018/01/10/my-first-blog。
-确认博客无误之后，通过`hexo g`和`hexo d`部署发布博文。通过http://blog.bakka.site/2018/01/10/my-first-blog访问正式的博文。
+在`---`后编写博文，通过`hexo s`启动服务，访问http://localhost:4000/2018/01/10/my-first-blog 。
+确认博客无误之后，通过`hexo g`和`hexo d`部署发布博文。通过http://blog.bakka.site/2018/01/10/my-first-blog 访问正式的博文。
 
 如果要删除博文，直接删除`站点目录/source/_posts/my-first-blog.md`再通过`hexo g && hexo d`部署到github上就ok了。
 
