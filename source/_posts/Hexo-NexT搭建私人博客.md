@@ -139,6 +139,36 @@ public/
 ```
 通过git命令上传仓库。
 
+#### 上传主题仓库
+上传站点目录时，我们发现主题所在仓库是无法上传到git上的。因为我们的主题目录本身也是`git clone`下来的。
+
+这里可以通过删除主题仓库的git相关文件(不建议)：
+```
+~ rm -rf .git*
+```
+
+或者fork https://github.com/iissnan/hexo-theme-next作为自己的一个主题仓库。
+修改`.git/config`文件：
+```
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = fork的主题仓库地址
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+```
+
+上传我们的主题改动。将该仓库作为我们独有改动过的仓库。
+
+虽然这样导致我们会有2个git仓库存我们的博客代码，但是分站点、主题两个部分去维护，也是可以的。
+
 ## 站点配置
 
 配置站点基本信息，如语言、作者、标题等。
