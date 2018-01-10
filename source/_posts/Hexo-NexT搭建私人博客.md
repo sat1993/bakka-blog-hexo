@@ -147,7 +147,7 @@ public/
 ~ rm -rf .git*
 ```
 
-或者fork https://github.com/iissnan/hexo-theme-next作为自己的一个主题仓库。
+或者`fork https://github.com/iissnan/hexo-theme-next`作为自己的一个主题仓库。
 修改`.git/config`文件：
 ```
 [core]
