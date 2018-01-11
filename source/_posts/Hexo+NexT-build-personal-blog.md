@@ -6,6 +6,7 @@ tags:
   - NexT
   - 私人博客
 categories: 手记
+comments: true
 ---
 
 通过Hexo+Next和Github Pages搭建私人博客。
@@ -105,6 +106,15 @@ categories:
 确认博客无误之后，通过`hexo g`和`hexo d`部署发布博文。通过http://blog.bakka.site/2018/01/10/my-first-blog 访问正式的博文。
 
 如果要删除博文，直接删除`站点目录/source/_posts/my-first-blog.md`再通过`hexo g && hexo d`部署到github上就ok了。
+
+博文起始字段含义:
+* title 文章的标题
+* date 创建日期 （文件的创建日期 ）
+* updated 修改日期 （ 文件的修改日期）
+* comments 是否开启评论 true，默认为false
+* tags 标签
+* categories 分类
+* permalink url中的名字（文件名）
 
 ### 博文备份
 hexo是通过本地解析将`站点目录/source/_posts/`下的md文件解析成html文件,保存在public目录下。
@@ -237,6 +247,22 @@ theme: next
 </body>
 </html>
 ```
+
+### 配置默认博文模板
+
+修改站点目录下`scaffolds/post.md`文件，修改为：
+
+```
+---
+title: {{ title }}
+date: {{ date }}
+updated: {{ date }}
+tags:
+categories:
+comments: true
+---
+```
+这样每次`hexo new blog`的时候，都会带有这些起始字段。
 
 ### 博文压缩
 
@@ -493,3 +519,53 @@ footer:
     version: false
 ```
 
+### 添加来必力评论
+
+登陆[来必力](https://livere.com/),点击`右上角头像->管理页面->安装Free版本`。
+填入站点信息之后，将会获得如下代码：
+```
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="xxxx">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+```
+其中第一行`div`标签的`data-uid`属性复制出来。
+填入到主题配置文件的`livere_uid`属性中：
+```
+livere_uid: xxxx
+```
+在`hexo g && hexo s `之后即可看到文章最下方的评论。
+
+### 添加访问统计
+
+登陆[百度统计](http://tongji.baidu.com/)，添加网站后，获取到如下代码:
+```
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?xxxxx";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+```
+获取`hm.js?`后的统计Id`xxxxx`将其填入主题配置文件_config.yml中
+```
+baidu_analytics: xxxxx
+```
+在`hexo g && gulp && hexo s`之后即可添加百度统计。`hexo d`之后即可在百度分析后台看到数据了。
