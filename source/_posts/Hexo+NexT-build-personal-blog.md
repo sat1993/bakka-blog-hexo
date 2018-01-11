@@ -328,6 +328,12 @@ search:
   format: html
   limit: 10000
 ```
+编辑主题配置文件_config.yml，启用本地搜索功能：
+```
+# Local search
+local_search:
+  enable: true
+```
 
 ## 主题配置
 
@@ -347,6 +353,18 @@ favicon:
 ~ mv my-32x32-icon.png theme/next/source/images/favicon-32x32.png
 ```
 刷新服务即可。
+
+### 设置首页不显示全文
+
+修改主题配置文件_config.yml,将`auto_excerpt.enable`设置为true：
+
+```
+# Automatically Excerpt. Not recommand.
+# Please use <!-- more --> in the post to control excerpt accurately.
+auto_excerpt:
+  enable: true
+  length: 150
+```
 
 ### 菜单管理
 

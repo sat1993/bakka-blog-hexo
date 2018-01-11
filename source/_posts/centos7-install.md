@@ -3,9 +3,9 @@ title: 安装centos7操作系统
 date: 2018-01-10 11:26:06
 tags:
   - linux
-  - 操作系统
+  - centos7
 comments: true
-categories: 个人服务器
+categories: centos7
 ---
 ## 服务器简介
 
