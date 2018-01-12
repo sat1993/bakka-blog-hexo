@@ -62,7 +62,7 @@ services:
 
 ## 遇到的问题
 
-#### 进行bt下载时，新建bt任务容易出现file I/O error occurred问题，导致无法下载。
+### 进行bt下载时，新建bt任务容易出现file I/O error occurred问题，导致无法下载。
 
 我的原因是文件系统或者内核不支持aria2.conf中的file-allocation=falloc配置
 将file-allocation配置修改为none或者prealloc就正常了。
