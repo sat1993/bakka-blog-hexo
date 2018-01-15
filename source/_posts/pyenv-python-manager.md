@@ -31,6 +31,13 @@ fi
 刷新配置立即生效
 ~ source ~/.bash_profile
 ```
+### 安装python所需依赖
+
+安装python前需要先安装好yum依赖。
+```
+~ yum groupinstall 'Development Tools'
+~ yum install zlib-devel bzip2-devel openssl-devel ncurese-devel
+```
 
 ### 使用
 
